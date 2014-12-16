@@ -28,12 +28,16 @@ fileLottery.readFiles = function(directoryPath) {
 		var fs = require("fs");
 	    return fs.readdirSync(directoryPath);
 }
-var Logger = function(){
 
+var Logger = function( directory_path ){
+
+	this.ut = directory_path;
 }
+
 Logger.prototype = {
-	add: function(directory_path) {
-		return this.directory_path;
+	add: function() {
+		var filelottery = new fileLottery(this.ut);
+		return filelottery.elements.length;
 	}
 }
 

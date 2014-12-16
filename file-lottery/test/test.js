@@ -49,7 +49,7 @@ suite('fileLottery readFiles', function() {
 
   test ('read files from a given directory path', function() {
     var path = (__dirname + "/../src");
-    assert.deepEqual( ["fileLottery.js"], fileLottery.readFiles(path) );
+    assert.deepEqual( [".DS_Store","fileLottery.js","files"], fileLottery.readFiles(path) );
   });
 
 });
@@ -74,9 +74,9 @@ suite('fileLottery output', function() {
 suite('logger function tests', function() {
 
     test ('No files available (empty result)', function() {
-        var path = (__dirname + "/../src");
-        var logg = new Logger();
-        assert.equal( [], logg.add(path) );
+        var path = (__dirname + "/../src/files");
+        var logg = new Logger(path);
+        assert.equal( 0, logg.add() );
     });
 
 });
