@@ -3,6 +3,7 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var path = require('path');
+var spy = sinon.spy();
 
 var fileLottery = require('../src/fileLottery.js').fileLottery;
 var Logger = require('../src/fileLottery.js').Logger;
@@ -44,7 +45,6 @@ suite('Random functions', function() {
 
 });
 
-
 suite('fileLottery readFiles', function() {
 
   test ('read files from a given directory path', function() {
@@ -73,6 +73,9 @@ suite('fileLottery output', function() {
 
 suite('logger function tests', function() {
 
+    // var mockReadFiles = sinon.stub(Logger, "add");
+    // mockReadFiles.withArgs("testdir").returns(TEST_FILE_LIST);
+
     test ('No files available (empty result)', function() {
         var path = (__dirname + "/../src/files");
         var logg = new Logger(path);
@@ -83,5 +86,16 @@ suite('logger function tests', function() {
         var logg = new Logger(path);
         assert.equal( 4, logg.add() );
     });
+
+        // test ('We shuffle the file list in the directory', function() {
+        //     var mockRandomGenerator = sinon.stub(fileLottery,"generateRandom");
+        //     mockRandomGenerator.onFirstCall().returns(1);
+        //     mockRandomGenerator.onSecondCall().returns(0);
+        //     assert.deepEqual( ["file2", "file1"], f.shuffle() );
+        //     fileLottery.generateRandom.restore();
+
+        // assert(spy.calledWith("message"));
+
+    // Logger.add.restore();
 
 });
